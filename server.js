@@ -8,6 +8,8 @@ require("dotenv").config()
 
 // To Use .env, preface the variable name with process.env.
 app.use(bodyParser.json({ type: 'application/json' }));
+app.use(cors());
+
 
 app.get("/api", cors(), (req, res, next) => {
     fs.readFile(__dirname + "/" + "devices.json", "utf-8", (err, data) => {
