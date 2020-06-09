@@ -18,6 +18,55 @@
             "gateway": "https://maker.ifttt.com/trigger/{0}/with/key/{1}", 
             "localID": "monitors"
         }
+    },
+    "2":{
+        "name": "Bedside Light",
+        "type": "light",
+        "ctrl_type": "switch",
+        "ctrl": {
+            "brand": "hue",
+            "gateway": "192.168.0.25",
+            "localID": "3"
+        }
+    },
+    "3":{
+        "name": "Wardrobe",
+        "type": "light",
+        "ctrl_type": "switch",
+        "ctrl": {
+            "brand": "hue",
+            "gateway": "192.168.0.25",
+            "localID": "14"
+        }
+    },
+    "4":{
+        "name": "Mid Wardrobe",
+        "type": "light",
+        "ctrl_type": "switch",
+        "ctrl": {
+            "brand": "hue",
+            "gateway": "192.168.0.25",
+            "localID": "4"
+        }
+    },
+    "5":{
+        "name": "Mid Ladder",
+        "type": "light",
+        "ctrl_type": "switch",
+        "ctrl": {
+            "brand": "hue",
+            "gateway": "192.168.0.25",
+            "localID": "16"
+        }
+    },
+    "6":{
+        "name": "Ladder",
+        "type": "light",
+        "ctrl_type": "switch",
+        "ctrl": {
+            "brand": "hue",
+            "gateway": "192.168.0.25",
+            "localID": "6"
+        }
     }
-
 }
