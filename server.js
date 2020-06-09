@@ -39,6 +39,6 @@ app.post("/device", cors(), (req, res, next) => {
     })
 })
 
-app.listen(1337, () => {
-    console.log("Server running on port 1337");
+app.listen(420, () => {
+    console.log("Server running on port 420");
 });
