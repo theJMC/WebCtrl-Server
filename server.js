@@ -42,3 +42,4 @@ app.post("/device", cors(), (req, res, next) => {
 app.listen(420, () => {
     console.log("Server running on port 420");
 });
+
