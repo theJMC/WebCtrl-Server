@@ -18,8 +18,17 @@ app.get("/api", cors(), (req, res, next) => {
     })
 })
 
+app.get("/quick", cors(), (req, res, next) => {
+    fs.readFile(__dirname + "/" + "actions.json", "utf-8", (err, data) => {
+        let obj = JSON.parse(data);
+        res.json(obj);
+    })
+})
+
 //function control(id, )
 
+
+// ||======== DEVICES CONTROLLER ========||
 var devices;
 
 app.post("/device", cors(), (req, res, next) => {
@@ -28,11 +37,31 @@ app.post("/device", cors(), (req, res, next) => {
         devices = JSON.parse(data);
         ctrl_type = devices[body["id"]]["ctrl"]["brand"]
         if (ctrl_type == "hue"){
-            hue.hue(body["id"], body["state"]);
+            hue.light(body["id"], body["state"]);
             res.status(200).json({"message": "Recived Command Successfully, setting " + devices[body["id"]]["name"] + " to state " + body["state"], "recieved": body})
         } else if (ctrl_type == "ifttt") {
             ifttt.ifttt(body["id"]);
             res.status(200).json({"message": "Recived Command Successfully, triggering " + devices[body["id"]]["name"], "recieved": body})
+        } else {
+            res.status(400).json({"message": "Malformed Request - ID Lookup failed", "recieved": body})
+        }
+    })
+})
+
+// ||======== QUICK ACTIONS CONTROLLER ========||
+var actions;
+
+app.post("/action", cors(), (req, res, next) => {
+    var body = req.body;
+    fs.readFile(__dirname + "/" + "devices.json", "utf-8", (err, data) => {
+        actions = JSON.parse(data);
+        ctrl_type = actions[body["id"]]["ctrl"]["brand"]
+        if (ctrl_type == "hue"){
+            hue.room(body["id"], body["state"]);
+            res.status(200).json({"message": "Recived Command Successfully, setting " + actions[body["id"]]["name"] + " to state " + body["state"], "recieved": body})
+        } else if (ctrl_type == "ifttt") {
+            ifttt.ifttt(body["id"]);
+            res.status(200).json({"message": "Recived Command Successfully, triggering " + actions[body["id"]]["name"], "recieved": body})
         } else {
             res.status(400).json({"message": "Malformed Request - ID Lookup failed", "recieved": body})
         }

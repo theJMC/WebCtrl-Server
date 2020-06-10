@@ -3,7 +3,7 @@ var axios = require("axios");
 require("dotenv").config()
 
 module.exports = {
-    hue: function hue(id, state) {
+    light: function light(id, state) {
         fs.readFile(__dirname + "/../" + "devices.json", "utf-8", (err, data) => {
             devices = JSON.parse(data);
             console.log("Hue Called with ID " + id + " ( " + devices[id]["name"] + " ) and state " + state);
@@ -20,5 +20,24 @@ module.exports = {
                 console.error(error)
             })
         }
-    )}
+    )},
+    room: function room(id, state) {
+        fs.readFile(__dirname + "/../" + "actions.json", "utf-8", (err, data) => {
+            devices = JSON.parse(data);
+            console.log("Hue Room Called with ID " + id + " ( " + devices[id]["name"] + " ) and state " + state);
+            var url = "http://" + devices[id]["ctrl"]["gateway"] + "/api/" + process.env.hueKey + "/groups/" + devices[id]["ctrl"]["localID"] + "/action";
+            axios({
+                method: "put",
+                url: url,
+                data: {"on": state}
+            })
+            .then((response) => {
+                console.log("Turned Room On");
+                //console.log("URL: " + url)
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+        })
+    }
 }

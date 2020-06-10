@@ -1,0 +1,24 @@
+{
+    "0": {
+        "name": "All Lights",
+        "group": true,
+        "single": false,
+        "type": "room",
+        "ctrl": {
+            "brand": "hue",
+            "gateway": "192.168.0.25",
+            "localID": "3"
+        }
+    },
+    "1": {
+        "name": "Monitors",
+        "group": false,
+        "single": true,
+        "type": "plug",
+        "ctrl": {
+            "brand": "hue",
+            "gateway": "https://maker.ifttt.com/trigger/{0}/with/key/{1}",
+            "localID": "monitors"
+        }
+    }
+}
