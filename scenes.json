@@ -34,5 +34,23 @@
             "gateway": "192.168.0.25",
             "localID": "AfH-Q2VX3tXpHMz"
         }
+    },
+    "2": {
+        "name": "Bed",
+        "type": "scene",
+        "room": {
+            "name": "James' Bedroom",
+            "type": "room",
+            "ctrl": {
+                "brand": "hue",
+                "gateway": "192.168.0.25",
+                "localID": "3"
+            }
+        },
+        "ctrl": {
+            "brand": "hue",
+            "gateway": "192.168.0.25",
+            "localID": "fQ7KeSmGkfDRpkf"
+        }
     }
 }
