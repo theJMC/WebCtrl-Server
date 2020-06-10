@@ -1,0 +1,38 @@
+{
+    "0": {
+        "name": "LEDs",
+        "type": "scene",
+        "room": {
+            "name": "James' Bedroom",
+            "type": "room",
+            "ctrl": {
+                "brand": "hue",
+                "gateway": "192.168.0.25",
+                "localID": "3"
+            }
+        },
+        "ctrl": {
+            "brand": "hue",
+            "gateway": "192.168.0.25",
+            "localID": "cAcVDd71VcU62Lv"
+        }
+    },
+    "1": {
+        "name": "Energise",
+        "type": "scene",
+        "room": {
+            "name": "James' Bedroom",
+            "type": "room",
+            "ctrl": {
+                "brand": "hue",
+                "gateway": "192.168.0.25",
+                "localID": "3"
+            }
+        },
+        "ctrl": {
+            "brand": "hue",
+            "gateway": "192.168.0.25",
+            "localID": "AfH-Q2VX3tXpHMz"
+        }
+    }
+}

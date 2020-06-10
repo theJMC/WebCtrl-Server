@@ -39,5 +39,25 @@ module.exports = {
                 console.error(error)
             })
         })
+    },
+    scene: function scene(grpID, sceneID){
+        fs.readFile(__dirname + "/../" + "scenes.json", "utf-8", (err, data) => {
+            var scenes;
+            scenes = JSON.parse(data);
+            console.log(JSON.stringify(scenes))
+            console.log("Hue Scene Called with Room ID " + grpID + " ( " + scenes[grpID]["name"] + " ) and sceneID " + scenes[grpID]["ctrl"]["localID"]);
+            var url = "http://" + scenes[grpID]["ctrl"]["gateway"] + "/api/" + process.env.hueKey + "/groups/" + scenes[grpID]["ctrl"]["localID"] + "/action";
+            axios({
+                method: "put",
+                url: url,
+                data: {"scene": scenes[grpID]["ctrl"]["localID"]}
+            })
+            .then((response) => {
+                //console.log("URL: " + url)
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+        })
     }
 }

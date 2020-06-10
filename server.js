@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var hue = require("./controllers/hue"); 
 var ifttt = require("./controllers/ifttt"); 
 var WoL = require("./controllers/wol"); 
+var axios = require("axios");
 require("dotenv").config()
 
 // To Use .env, preface the variable name with process.env.
@@ -66,12 +67,36 @@ app.post("/action", cors(), (req, res, next) => {
     })
 })
 
-// ||======== PC WoL CONTROLLER
+// ||======== PC WoL CONTROLLER ========||
 
 app.get("/wol", cors(), (req, res, next) => {
     WoL.Wake()
     res.status(200).json({"message": "Triggered WoL"})
 })
+
+// ||======== ROOM SCENES CONTROLLER ========||
+
+var scenes;
+
+app.post("/scene", cors(), (req, res, next) => {
+    var body = req.body;
+    fs.readFile(__dirname + "/" + "scenes.json", "utf-8", (err, data) => {
+        scenes = JSON.parse(data);
+        ctrl_type = scenes[body["id"]]["ctrl"]["brand"]
+        if (ctrl_type == "hue"){
+            hue.scene(body["id"], body["sceneID"]);
+            res.json({"message": "Recived Command Successfully, setting " + scenes[body["id"]]["name"] + " to state " + body["sceneID"], "recieved": body})
+            res.status(200)
+        } else if (ctrl_type == "ifttt") {
+            ifttt.ifttt(body["id"]);
+            res.status(200).json({"message": "Recived Command Successfully, triggering " + scenes[body["id"]]["name"], "recieved": body})
+        } else {
+            res.status(400).json({"message": "Malformed Request - ID Lookup failed", "recieved": body})
+        }
+    })
+})
+
+
 
 app.listen(420, () => {
     console.log("Server running on port 420");
