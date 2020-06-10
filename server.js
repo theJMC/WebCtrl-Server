@@ -27,6 +27,13 @@ app.get("/quick", cors(), (req, res, next) => {
     })
 })
 
+app.get("/scenes", cors(), (req, res, next) => {
+    fs.readFile(__dirname + "/" + "scenes.json", "utf-8", (err, data) => {
+        let obj = JSON.parse(data);
+        res.json(obj);
+    })
+})
+
 // ||======== DEVICES CONTROLLER ========||
 var devices;
 
