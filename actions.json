@@ -20,5 +20,16 @@
             "gateway": "https://maker.ifttt.com/trigger/{0}/with/key/{1}",
             "localID": "monitors"
         }
+    },
+    "2": {
+        "name": "James PC",
+        "group": false,
+        "single": true,
+        "type": "wol-pc",
+        "ctrl": {
+            "brand": "wol",
+            "gateway": null,
+            "localID": null
+        }
     }
 }
