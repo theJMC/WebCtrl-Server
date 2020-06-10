@@ -70,6 +70,7 @@ app.post("/action", cors(), (req, res, next) => {
 
 app.get("/wol", cors(), (req, res, next) => {
     WoL.Wake()
+    res.status(200).json({"message": "Triggered WoL"})
 })
 
 app.listen(420, () => {
