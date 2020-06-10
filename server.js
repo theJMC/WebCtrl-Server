@@ -4,6 +4,7 @@ var cors = require("cors");
 var bodyParser = require('body-parser');
 var hue = require("./controllers/hue"); 
 var ifttt = require("./controllers/ifttt"); 
+var WoL = require("./controllers/wol"); 
 require("dotenv").config()
 
 // To Use .env, preface the variable name with process.env.
@@ -24,9 +25,6 @@ app.get("/quick", cors(), (req, res, next) => {
         res.json(obj);
     })
 })
-
-//function control(id, )
-
 
 // ||======== DEVICES CONTROLLER ========||
 var devices;
@@ -66,6 +64,12 @@ app.post("/action", cors(), (req, res, next) => {
             res.status(400).json({"message": "Malformed Request - ID Lookup failed", "recieved": body})
         }
     })
+})
+
+// ||======== PC WoL CONTROLLER
+
+app.get("/wol", cors(), (req, res, next) => {
+    WoL.Wake()
 })
 
 app.listen(420, () => {
