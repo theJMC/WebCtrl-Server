@@ -14,21 +14,21 @@ app.use(cors());
 
 
 app.get("/api", cors(), (req, res, next) => {
-    fs.readFile(__dirname + "/" + "devices.json", "utf-8", (err, data) => {
+    fs.readFile(__dirname + "/" + "configs/devices.json", "utf-8", (err, data) => {
         let obj = JSON.parse(data);
         res.json(obj);
     })
 })
 
 app.get("/quick", cors(), (req, res, next) => {
-    fs.readFile(__dirname + "/" + "actions.json", "utf-8", (err, data) => {
+    fs.readFile(__dirname + "/" + "configs/actions.json", "utf-8", (err, data) => {
         let obj = JSON.parse(data);
         res.json(obj);
     })
 })
 
 app.get("/scenes", cors(), (req, res, next) => {
-    fs.readFile(__dirname + "/" + "scenes.json", "utf-8", (err, data) => {
+    fs.readFile(__dirname + "/" + "configs/scenes.json", "utf-8", (err, data) => {
         let obj = JSON.parse(data);
         res.json(obj);
     })
@@ -39,7 +39,7 @@ var devices;
 
 app.post("/device", cors(), (req, res, next) => {
     var body = req.body;
-    fs.readFile(__dirname + "/" + "devices.json", "utf-8", (err, data) => {
+    fs.readFile(__dirname + "/" + "configs/devices.json", "utf-8", (err, data) => {
         devices = JSON.parse(data);
         ctrl_type = devices[body["id"]]["ctrl"]["brand"]
         if (ctrl_type == "hue"){
@@ -59,7 +59,7 @@ var actions;
 
 app.post("/action", cors(), (req, res, next) => {
     var body = req.body;
-    fs.readFile(__dirname + "/" + "devices.json", "utf-8", (err, data) => {
+    fs.readFile(__dirname + "/" + "configs/devices.json", "utf-8", (err, data) => {
         actions = JSON.parse(data);
         ctrl_type = actions[body["id"]]["ctrl"]["brand"]
         if (ctrl_type == "hue"){
@@ -87,7 +87,7 @@ var scenes;
 
 app.post("/scene", cors(), (req, res, next) => {
     var body = req.body;
-    fs.readFile(__dirname + "/" + "scenes.json", "utf-8", (err, data) => {
+    fs.readFile(__dirname + "/" + "configs/scenes.json", "utf-8", (err, data) => {
         scenes = JSON.parse(data);
         ctrl_type = scenes[body["id"]]["ctrl"]["brand"]
         if (ctrl_type == "hue"){

@@ -4,7 +4,7 @@ require("dotenv").config()
 
 module.exports = {
     light: function light(id, state) {
-        fs.readFile(__dirname + "/../" + "devices.json", "utf-8", (err, data) => {
+        fs.readFile(__dirname + "/../" + "configs/devices.json", "utf-8", (err, data) => {
             devices = JSON.parse(data);
             console.log("Hue Called with ID " + id + " ( " + devices[id]["name"] + " ) and state " + state);
             var url = "http://" + devices[id]["ctrl"]["gateway"] + "/api/" + process.env.hueKey + "/lights/" + devices[id]["ctrl"]["localID"] + "/state";
@@ -22,7 +22,7 @@ module.exports = {
         }
     )},
     room: function room(id, state) {
-        fs.readFile(__dirname + "/../" + "actions.json", "utf-8", (err, data) => {
+        fs.readFile(__dirname + "/../" + "configs/actions.json", "utf-8", (err, data) => {
             devices = JSON.parse(data);
             console.log("Hue Room Called with ID " + id + " ( " + devices[id]["name"] + " ) and state " + state);
             var url = "http://" + devices[id]["ctrl"]["gateway"] + "/api/" + process.env.hueKey + "/groups/" + devices[id]["ctrl"]["localID"] + "/action";
@@ -41,7 +41,7 @@ module.exports = {
         })
     },
     scene: function scene(grpID, sceneID){
-        fs.readFile(__dirname + "/../" + "scenes.json", "utf-8", (err, data) => {
+        fs.readFile(__dirname + "/../" + "configs/scenes.json", "utf-8", (err, data) => {
             var scenes;
             scenes = JSON.parse(data);
             console.log(JSON.stringify(scenes))

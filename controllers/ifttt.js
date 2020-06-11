@@ -4,7 +4,7 @@ require("dotenv").config()
 
 module.exports = {
     ifttt: function ifttt(id) {
-        fs.readFile(__dirname + "/../" + "devices.json", "utf-8", (err, data) => {
+        fs.readFile(__dirname + "/../" + "configs/devices.json", "utf-8", (err, data) => {
             devices = JSON.parse(data);
             console.log("Ifttt Called with ID " + id + " ( " + devices[id]["name"] + " )");
             var url = devices[id]["ctrl"]["gateway"].replace("{0}", devices[id]["ctrl"]["localID"]).replace("{1}", process.env.iftttKey);
