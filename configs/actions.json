@@ -1,13 +1,28 @@
 {
     "0": {
-        "name": "All Lights",
+        "name": "Setup",
         "group": true,
         "single": false,
-        "type": "room",
-        "ctrl": {
-            "brand": "hue",
-            "gateway": "192.168.0.25",
-            "localID": "3"
+        "type": "group",
+        "actions":{
+            "0": {
+                "name": "LED Scene",
+                "brand": "hue",
+                "type": "scene",
+                "sceneID": "0"
+            },
+            "1": {
+                "name": "Monitors",
+                "brand": "ifttt",
+                "type": "plug",
+                "localID": "monitors"
+            },
+            "2": {
+                "name": "Lightbox",
+                "brand": "ifttt",
+                "type": "plug",
+                "localID": "lightbox_on"
+            }
         }
     },
     "1": {

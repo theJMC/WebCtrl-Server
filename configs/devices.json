@@ -19,7 +19,18 @@
             "localID": "monitors"
         }
     },
-    "2":{
+    "2": {
+        "name": "Lightbox",
+        "type": "light",
+        "ctrl_type": "switch-plug",
+        "ctrl":{
+            "brand": "ifttt",
+            "gateway": "https://maker.ifttt.com/trigger/{0}/with/key/{1}", 
+            "local-On-ID": "lightbox-on",
+            "local-Off-ID": "lightbox-off"
+        }
+    },
+    "3":{
         "name": "Bedside Light",
         "type": "light",
         "ctrl_type": "switch",
@@ -29,7 +40,7 @@
             "localID": "3"
         }
     },
-    "3":{
+    "4":{
         "name": "Wardrobe",
         "type": "light",
         "ctrl_type": "switch",
@@ -39,7 +50,7 @@
             "localID": "14"
         }
     },
-    "4":{
+    "5":{
         "name": "Mid Wardrobe",
         "type": "light",
         "ctrl_type": "switch",
@@ -49,7 +60,7 @@
             "localID": "4"
         }
     },
-    "5":{
+    "6":{
         "name": "Mid Ladder",
         "type": "light",
         "ctrl_type": "switch",
@@ -59,7 +70,7 @@
             "localID": "16"
         }
     },
-    "6":{
+    "7":{
         "name": "Ladder",
         "type": "light",
         "ctrl_type": "switch",
