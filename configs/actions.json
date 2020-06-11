@@ -10,6 +10,7 @@
                 "brand": "hue",
                 "type": "scene",
                 "sceneID": "0"
+
             },
             "1": {
                 "name": "Monitors",
@@ -30,10 +31,13 @@
         "group": false,
         "single": true,
         "type": "plug",
-        "ctrl": {
-            "brand": "hue",
-            "gateway": "https://maker.ifttt.com/trigger/{0}/with/key/{1}",
-            "localID": "monitors"
+        "actions": {
+            "0": {
+                "brand": "ifttt",
+                "localID": "monitors",
+                "ctrl_action": "toggle"
+            }
+            
         }
     },
     "2": {
@@ -41,7 +45,7 @@
         "group": false,
         "single": true,
         "type": "wol-pc",
-        "ctrl": {
+        "actions": {
             "brand": "wol",
             "gateway": null,
             "localID": null
