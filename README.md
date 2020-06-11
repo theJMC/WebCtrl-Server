@@ -21,12 +21,12 @@ The Smart Home Controller Endpoints are:
 
 Endpoint                    | Function
 ----------------------------|----------
-[`[POST] /device`](#`/device`)| Takes a JSON formatted body, and triggers the correct [controller file](#controllers) regarding the ID passed by the `POST` body
-[`[POST] /action`](#`/action`)| Takes a JSON formatted body, and loops through all keys, and triggers the correct [controller file](#controllers) by 
+[`[POST] /device`](#device)| Takes a JSON formatted body, and triggers the correct [controller file](#controllers) regarding the ID passed by the `POST` body
+[`[POST] /action`](#action)| Takes a JSON formatted body, and loops through all keys, and triggers the correct [controller file](#controllers) by
 
 ## Controllers
 
-### `/Devices`
+### `/Device`
 
 - To Be Added
 
