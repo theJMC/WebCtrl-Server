@@ -103,6 +103,13 @@ app.post("/scene", cors(), (req, res, next) => {
     })
 })
 
+// ||======== HUE DEVICE COLOUR CHANGE ========||
+
+app.post("/colour", cors(), (req, res, next) => {
+    var body = req.body;
+    console.error(body)
+    res.status(200).json({"message": "Successfully recieved json"})
+})
 
 
 app.listen(420, () => {
